@@ -52,7 +52,7 @@ Fazer o usuário se sentir confiante e capaz de resolver o problema. Termine res
     final apiKey = dotenv.env['GOOGLE_API_KEY']!;
 
     // criamos a instancia do modelo
-    _model = GenerativeModel(model: "gemini-1.5-flash", apiKey: apiKey, systemInstruction: Content.system(instructionsText));
+    _model = GenerativeModel(model: "gemini-flash-latest", apiKey: apiKey, systemInstruction: Content.system(instructionsText));
 
     // criamos uma sessao de chat usando o model.starChart
     _chatSession = _model?.startChat();
@@ -89,6 +89,7 @@ Fazer o usuário se sentir confiante e capaz de resolver o problema. Termine res
         );
       }
     } catch (e) {
+      print(e);
       messageList.add(
           ChatMessage(
             id: DateTime.now().toString(),

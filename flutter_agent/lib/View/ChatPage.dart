@@ -24,7 +24,7 @@ class _ChatpageState extends State<Chatpage> {
     return Scaffold(
       backgroundColor: AppColors.carbonBlack,
       appBar: AppBar(
-        title: Text("Mentor Flutter AI", style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.dryBeige)),
+        title: Text("Mentor Flutter AI", style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.skyBlue)),
         elevation: 2,
         centerTitle: true,
         backgroundColor: AppColors.carbonBlack,
@@ -61,7 +61,7 @@ class _ChatpageState extends State<Chatpage> {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: AppColors.dryBeige,
+        color: AppColors.carbonBlack,
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
@@ -70,40 +70,43 @@ class _ChatpageState extends State<Chatpage> {
           ),
         ],
       ),
-      child: Row(
-        spacing: 8.0,
-        children: [
-          Expanded(
-            // expandedn pra só ocupar o espaço disponível na tela pq text field é guloso
-            child: TextField(
-              onSubmitted: (_) {},
-              controller: _textController,
-              decoration: InputDecoration(
-                hintText: 'Digite sua mensagem',
-                hintStyle: TextStyle(color: AppColors.babyBlue),
-                filled: true,
-                fillColor: Colors.grey[700],
-                contentPadding: EdgeInsets.all(16.0),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(16.0),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Row(
+          spacing: 8.0,
+          children: [
+            Expanded(
+              // expandedn pra só ocupar o espaço disponível na tela pq text field é guloso
+              child: TextField(
+                onSubmitted: (_) => _sendMessage(),
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: 'Digite sua mensagem',
+                  hintStyle: TextStyle(color: AppColors.skyBlue), 
+                  filled: true,
+                  fillColor: Colors.grey[700],
+                  contentPadding: EdgeInsets.all(16.0),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
                 ),
               ),
             ),
-          ),
-
-          Consumer<Chatcontroller>(builder: (context, chatcontroller, child) {
-            return FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: AppColors.babyBlue,
-              elevation: 0,
-              mini: true,
-              child: chatcontroller.isLoading 
-                    ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
-                    : const Icon(Icons.send, color: Colors.white, size: 20),
-              );
-          })
-        ],
+        
+            Consumer<Chatcontroller>(builder: (context, chatcontroller, child) {
+              return FloatingActionButton(
+                onPressed: chatcontroller.isLoading ? null : _sendMessage,
+                backgroundColor: AppColors.skyBlue,
+                elevation: 0,
+                // mini: true,
+                child: chatcontroller.isLoading 
+                      ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                      : const Icon(Icons.send, color: Colors.white, size: 20),
+                );
+            })
+          ],
+        ),
       ),
     );
   }
@@ -122,7 +125,7 @@ class _ChatpageState extends State<Chatpage> {
           ),
 
           Text(
-            "Vamos conversar sobre tudo de FLutter!",
+            "Vamos conversar sobre tudo de Flutter!",
             style: TextStyle(fontSize: 20, color: Colors.grey[600]),
           ),
         ],
@@ -130,7 +133,7 @@ class _ChatpageState extends State<Chatpage> {
     );
   }
 
-  void sendMessage() {
+  void _sendMessage() {
     final text = _textController.text;
     if(text.trim().isEmpty) return;
 

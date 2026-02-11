@@ -30,7 +30,7 @@ class _ChatBubble extends State<ChatBubble> {
 
         // o decoration é o css do container, e aqui usamos o box decoration
         decoration: BoxDecoration(
-          color: isUser ? AppColors.skyBlue : AppColors.dryBeige,
+          color: isUser ? AppColors.skyBlue : Colors.grey[500],
 
           borderRadius: BorderRadius.only(
             bottomLeft: isUser ? const Radius.circular(16) : Radius.zero,
@@ -68,7 +68,7 @@ class _ChatBubble extends State<ChatBubble> {
               MarkdownBody( // para usarmos o markdown, e podemos estilizar cada parte
                     data: widget.message.messageText,
                     styleSheet: MarkdownStyleSheet(
-                      p: const TextStyle(color: AppColors.dryBeige),
+                      p: const TextStyle(color: AppColors.carbonBlack, fontSize: 14),
                       code: const TextStyle(
                           backgroundColor: Colors.black12, 
                           fontFamily: 'monospace',
