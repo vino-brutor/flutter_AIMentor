@@ -24,3 +24,6 @@ O projeto utiliza a API do **Google Gemini** para gerar respostas didáticas e f
 ![WhatsApp Image 2026-02-11 at 17 42 41](https://github.com/user-attachments/assets/aa1d6f2f-3937-47dc-9c28-e3d96a028c6e)
 
 ![WhatsApp Image 2026-02-11 at 17 42 07](https://github.com/user-attachments/assets/5eefcd9d-fe90-4cbb-a23b-2b7dc4c378ee)
+
+## 📄 Licença
+Este projeto está sob a licença MIT.
