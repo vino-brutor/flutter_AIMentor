@@ -1,0 +1,3 @@
+enum Whosent {
+  user, gemini
+}
